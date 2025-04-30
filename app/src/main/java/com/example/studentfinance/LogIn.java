@@ -1,4 +1,5 @@
 package com.example.studentfinance;
+import com.google.firebase.auth.FirebaseUser;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -33,16 +34,37 @@ public class LogIn extends AppCompatActivity {
         signUpText = findViewById(R.id.SignUptext);
         mAuth = FirebaseAuth.getInstance();
 
+        loginButton.setOnClickListener(v -> loginUser());
+
+        signUpText.setOnClickListener(v -> {
+            // Redirect to sign-up activity
+            Toast.makeText(this, "Redirect to Sign-Up", Toast.LENGTH_SHORT).show();
+        });
 
 
+    }
+
+    private void loginUser() {
+
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
-
-
-
-
-
-
-
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user   = mAuth.getCurrentUser();
+                        Toast.makeText(LogIn.this, "Login successful!",
+                                Toast.LENGTH_SHORT).show();
+                        // Redirect to main activity or dashboard
+                    } else {
+                        Toast.makeText(LogIn.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
