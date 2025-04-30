@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation ("com.google.firebase:firebase-auth:22.1.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

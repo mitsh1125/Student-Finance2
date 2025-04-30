@@ -19,7 +19,7 @@ public class AboutTheApp extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_about_the_app);
 
-        Button button = findViewById(R.id);
+        Button button = findViewById(R.id.btnNext);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +27,10 @@ public class AboutTheApp extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main2), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
