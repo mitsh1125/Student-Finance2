@@ -10,8 +10,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.auth.FirebaseAuth;
+import android.widget.TextView;
 public class LogIn extends AppCompatActivity {
-    FirebaseAuth mAuth;
+
+
+    private EditText emailEditText, passwordEditText;
+    private Button loginButton;
+    private TextView signUpText;
+    private FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +27,21 @@ public class LogIn extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in);
 
+        emailEditText = findViewById(R.id.email);
+        passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login);
+        signUpText = findViewById(R.id.SignUptext);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main3), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+
+
+
+
     }
 }
